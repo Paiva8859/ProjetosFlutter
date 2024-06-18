@@ -45,11 +45,6 @@ class _WeatherDetailsScreenState extends State<WeatherDetailsScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Text(_controller.weatherList.last.name),
-                        IconButton(
-                          icon: const Icon(Icons.favorite_border_outlined),
-                          onPressed: (){
-                          },
-                        ),
                       ],
                     ),
                     Text(_controller.weatherList.last.description),

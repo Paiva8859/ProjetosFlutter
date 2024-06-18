@@ -16,7 +16,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Favorites'),
+        title: Text('Histórico'),
       ),
       body: FutureBuilder<List<City>>(
         future: _cityDbController.listCities(),
@@ -35,7 +35,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                 City city = favoriteCities[index];
                 return ListTile(
                   title: Text(city.cityName),
-                  subtitle: Text('Population: ${city.cityName}'), // Exemplo de atributo adicional
+                  subtitle: Text('Cidade: ${city.cityName}'), // Exemplo de atributo adicional
                   trailing: IconButton(
                     icon: Icon(Icons.delete),
                     onPressed: () {
@@ -56,7 +56,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
       await _cityDbController.deleteCity(city.cityName);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('${city.cityName} removida dos favoritos.'),
+          content: Text('${city.cityName} removida do histórico.'),
           duration: Duration(seconds: 2),
         ),
       );
@@ -64,7 +64,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Erro ao remover ${city.cityName} dos favoritos.'),
+          content: Text('Erro ao remover ${city.cityName} do histórico.'),
           duration: Duration(seconds: 2),
         ),
       );

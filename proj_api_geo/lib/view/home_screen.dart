@@ -55,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     onPressed: () {
                       Navigator.pushNamed(context, '/search');
                     },
-                    child: const Text("Localization"))
+                    child: const Text("Busca"))
               ],
             ),
             const SizedBox(height: 20),

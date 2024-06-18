@@ -10,7 +10,8 @@ class HomeScreen extends StatelessWidget {
         title: const Text("Home"),
       ),
       body: 
-      Column(
+      Center(
+        child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ElevatedButton(
@@ -27,6 +28,7 @@ class HomeScreen extends StatelessWidget {
             child: const Text('Register'),
           ),
         ],
+        )
       ),
     );
   }

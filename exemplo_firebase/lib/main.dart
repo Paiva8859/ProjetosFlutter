@@ -20,7 +20,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       home: const HomeScreen(),
       routes: {
-        //'/login':(context) => LoginScreen(),
+        // '/login':(context) => LoginScreen(),
         '/registro':(context) => const RegistroScreen()
       },
     );

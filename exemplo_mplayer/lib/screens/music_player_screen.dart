@@ -1,10 +1,11 @@
+import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:exemplo_mplayer/models/music_model.dart';
-import 'package:flutter/material.dart';
 
 class MusicPlayerScreen extends StatefulWidget {
   final MusicModel music;
-  const MusicPlayerScreen({super.key, required this.music});
+
+  const MusicPlayerScreen({Key? key, required this.music}) : super(key: key);
 
   @override
   State<MusicPlayerScreen> createState() => _MusicPlayerScreenState();
@@ -12,7 +13,7 @@ class MusicPlayerScreen extends StatefulWidget {
 
 class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
   late AudioPlayer _audio;
-  bool isPLaying = false;
+  bool isPlaying = false;
 
   @override
   void initState() {
@@ -24,29 +25,45 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
   Widget build(BuildContext context) {
     String url = widget.music.url;
     return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.music.title),
+      appBar: AppBar(
+        title: Text(widget.music.title),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            IconButton(
+              icon: Icon(Icons.skip_previous),
+              onPressed: () {
+              },
+              iconSize: 50,
+            ),
+            IconButton(
+              icon: Icon(isPlaying ? Icons.pause : Icons.play_arrow),
+              onPressed: () {
+                if (isPlaying) {
+                  _audio.pause();
+                  setState(() {
+                    isPlaying = false;
+                  });
+                } else {
+                  _audio.play(UrlSource(url));
+                  setState(() {
+                    isPlaying = true;
+                  });
+                }
+              },
+              iconSize: 50,
+            ),
+            IconButton(
+              icon: Icon(Icons.skip_next),
+              onPressed: () {
+              },
+              iconSize: 50,
+            ),
+          ],
         ),
-        body: Center(
-            child:
-                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          IconButton(
-            icon: Icon(Icons.play_arrow),
-            onPressed: () {
-              if (isPLaying) {
-                _audio.pause();
-                setState(() {
-                  isPLaying = false;
-                });
-              } else {
-                _audio.play(UrlSource(url));
-                setState(() {
-                  isPLaying = true;
-                });
-              }
-            },
-            iconSize: 50,
-          ),
-        ])));
+      ),
+    );
   }
 }

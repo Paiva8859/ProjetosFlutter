@@ -20,7 +20,7 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Search")),
+      appBar: AppBar(title: Text("Busca")),
       body: Padding(
         padding: EdgeInsets.all(12),
         child: Center(
@@ -32,10 +32,10 @@ class _SearchScreenState extends State<SearchScreen> {
                   TextFormField(
                       controller: _cityController,
                       decoration:
-                          InputDecoration(hintText: "Enter the city name"),
+                          InputDecoration(hintText: "Nome da cidade"),
                       validator: (value) {
                         if (value!.trim().isEmpty) {
-                          return "Please enter a city";
+                          return "Insira uma cidade";
                         }
                         return null;
                       }),
@@ -63,7 +63,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                     );
                                   });
                             }
-                            return const Center(child: Text("Empty Location"));
+                            return const Center(child: Text("Sem resultados"));
                           }),
                       )
 
